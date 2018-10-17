@@ -15,6 +15,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     http
         .oauth2Login()
+        .loginPage("/login")
         .tokenEndpoint()
         .accessTokenResponseClient(new RestOAuth2AccessTokenResponseClient(this.restOperations()))
         .and()
