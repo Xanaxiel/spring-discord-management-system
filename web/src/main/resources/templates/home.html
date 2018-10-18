@@ -320,10 +320,10 @@
                 </ul>
               </li>
 
-              <li class="dropdown dropdown-profile">
+              <li class="dropdown dropdown-profile" sec:authorize="isAuthenticated()">
                 <a href="javascript:void(0)" data-toggle="dropdown">
-                  <span class="m-r-sm">John Doe <span class="caret"></span></span>
-                  <img class="img-avatar img-avatar-48" src="/images/avatars/avatar3.jpg" alt="User profile pic"/>
+                  <span class="m-r-sm" th:text="${#authentication.getName()}"> <span class="caret"></span></span>
+                  <img class="img-avatar img-avatar-48" alt="User profile pic"/>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
                   <li class="dropdown-header">

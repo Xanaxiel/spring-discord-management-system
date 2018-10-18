@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-class UserEntityImpl implements UserEntity, Serializable {
+public class UserEntityImpl implements UserEntity, Serializable {
 
   @Id
   private long identifier;
