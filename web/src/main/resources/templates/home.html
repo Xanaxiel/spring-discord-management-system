@@ -31,198 +31,52 @@
     <aside class="app-layout-drawer">
       <div class="app-layout-drawer-scroll">
 
-        <div id="logo" class="drawer-header">
-          <a href="home.html"><img class="img-responsive" src="/images/logo/logo-backend.png" title="AppUI" alt="AppUI"/></a>
-        </div>
-
         <nav class="drawer-main">
           <ul class="nav nav-drawer">
 
-            <li class="nav-item nav-drawer-header">Apps</li>
+            <li class="nav-item nav-drawer-header">General</li>
 
             <li class="nav-item active">
               <a href="home.html"><i class="ion-ios-speedometer-outline"></i> Dashboard</a>
             </li>
 
-            <li class="nav-item">
-              <a href="frontend_home.html"><i class="ion-ios-monitor-outline"></i> Frontend</a>
-            </li>
-
-            <li class="nav-item nav-drawer-header">Components</li>
-
-            <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="ion-ios-calculator-outline"></i> UI Elements</a>
+            <li class="nav-item nav-item-has-subnav" sec:authorize="isAuthenticated()">
+              <a href="javascript:void(0)"><i class="ion-ios-person"></i> <span th:text="${user.getUsername()}"></span></a>
               <ul class="nav nav-subnav">
 
                 <li>
-                  <a href="base_ui_buttons.html">Buttons</a>
+                  <a href="base_ui_buttons.html"> Profile</a>
                 </li>
 
                 <li>
-                  <a href="base_ui_cards.html">Cards</a>
+                  <a href=""> Battles</a>
                 </li>
 
                 <li>
-                  <a href="base_ui_cards_api.html">Cards API</a>
+                  <a href=""> Voting</a>
                 </li>
 
                 <li>
-                  <a href="base_ui_layout.html">Layout</a>
+                  <a href=""> Giveaway</a>
                 </li>
 
                 <li>
-                  <a href="base_ui_grid.html">Grid</a>
+                  <a href=""> Friends</a>
                 </li>
 
                 <li>
-                  <a href="base_ui_icons.html">Icons</a>
-                </li>
-
-                <li>
-                  <a href="base_ui_modals_tooltips.html">Modals / Tooltips</a>
-                </li>
-
-                <li>
-                  <a href="base_ui_alerts_notify.html">Alerts / Notify</a>
-                </li>
-
-                <li>
-                  <a href="base_ui_pagination.html">Pagination</a>
-                </li>
-
-                <li>
-                  <a href="base_ui_progress.html">Progress</a>
-                </li>
-
-                <li>
-                  <a href="base_ui_tabs.html">Tabs</a>
-                </li>
-
-                <li>
-                  <a href="base_ui_typography.html">Typography</a>
-                </li>
-
-                <li>
-                  <a href="base_ui_widgets.html">Widgets</a>
+                  <a href=""> Shop</a>
                 </li>
 
               </ul>
             </li>
 
-            <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="ion-ios-compose-outline"></i> Forms</a>
-              <ul class="nav nav-subnav">
-
-                <li>
-                  <a href="base_forms_elements.html">Elements</a>
-                </li>
-
-                <li>
-                  <a href="base_forms_samples.html">Samples</a>
-                </li>
-
-                <li>
-                  <a href="base_forms_pickers_select.html">Pickers &amp; Select</a>
-                </li>
-
-                <li>
-                  <a href="base_forms_validation.html">Validation</a>
-                </li>
-
-                <li>
-                  <a href="base_forms_wizard.html">Wizard</a>
-                </li>
-
-              </ul>
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+              <a href="home.html"><i class="ion-ios-people"></i> My teams</a>
             </li>
 
-            <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="ion-ios-list-outline"></i> Tables</a>
-              <ul class="nav nav-subnav">
-
-                <li>
-                  <a href="base_tables_styles.html">Styles</a>
-                </li>
-
-                <li>
-                  <a href="base_tables_responsive.html">Responsive</a>
-                </li>
-
-                <li>
-                  <a href="base_tables_tools.html">Tools</a>
-                </li>
-
-                <li>
-                  <a href="base_tables_pricing.html">Pricing</a>
-                </li>
-
-                <li>
-                  <a href="base_tables_datatables.html">Wizard</a>
-                </li>
-
-              </ul>
-            </li>
-
-            <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="ion-ios-browsers-outline"></i> Pages</a>
-              <ul class="nav nav-subnav">
-
-                <li>
-                  <a href="base_pages_blank.html">Blank</a>
-                </li>
-
-                <li>
-                  <a href="base_pages_inbox.html">Inbox</a>
-                </li>
-
-                <li>
-                  <a href="base_pages_invoice.html">Invoice</a>
-                </li>
-
-                <li>
-                  <a href="base_pages_profile.html">Profile</a>
-                </li>
-
-                <li>
-                  <a href="base_pages_search.html">Search</a>
-                </li>
-
-              </ul>
-            </li>
-
-            <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="ion-social-javascript-outline"></i> JS plugins</a>
-              <ul class="nav nav-subnav">
-
-                <li>
-                  <a href="base_js_maps.html">Maps</a>
-                </li>
-
-                <li>
-                  <a href="base_js_sliders.html">Sliders</a>
-                </li>
-
-                <li>
-                  <a href="base_js_charts_flot.html">Charts - Flot</a>
-                </li>
-
-                <li>
-                  <a href="base_js_charts_chartjs.html">Charts - Chart.js</a>
-                </li>
-
-                <li>
-                  <a href="base_js_charts_sparkline.html">Charts - Sparkline</a>
-                </li>
-
-                <li>
-                  <a href="base_js_draggable.html">Draggable</a>
-                </li>
-
-                <li>
-                  <a href="base_js_syntax_highlight.html">Syntax highlight</a>
-                </li>
-
-              </ul>
+            <li class="nav-item active" sec:authorize="isAuthenticated()">
+              <a href="home.html"><i class="ion-ios-settings"></i> Settings</a>
             </li>
 
           </ul>
@@ -262,60 +116,20 @@
           </div>
 
           <div class="collapse navbar-collapse" id="header-navbar-collapse">
-            <!-- Header search form -->
-            <form class="navbar-form navbar-left app-search-form" role="search">
-              <div class="form-group">
-                <div class="input-group">
-                  <input class="form-control" type="search" id="search-input" placeholder="Search..."/>
-                  <span class="input-group-btn">
-								<button class="btn" type="button"><i class="ion-ios-search-strong"></i></button>
-							</span>
-                </div>
-              </div>
-            </form>
-
             <ul id="main-menu" class="nav navbar-nav navbar-left">
               <li class="dropdown">
                 <a href="#" data-toggle="dropdown">English <span class="caret"></span></a>
 
                 <ul class="dropdown-menu">
-                  <li><a href="javascript:void(0)">French</a></li>
-                  <li><a href="javascript:void(0)">German</a></li>
-                  <li><a href="javascript:void(0)">Italian</a></li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" data-toggle="dropdown">Pages <span class="caret"></span></a>
-
-                <ul class="dropdown-menu">
-                  <li><a href="javascript:void(0)">Analytics</a></li>
-                  <li><a href="javascript:void(0)">Visits</a></li>
-                  <li><a href="javascript:void(0)">Changelog</a></li>
+                  <li><a href="javascript:void(0)">Polish</a></li>
                 </ul>
               </li>
             </ul>
             <!-- .navbar-left -->
 
-            <ul class="nav navbar-nav navbar-right navbar-toolbar hidden-sm hidden-xs" sec:authorize="isAuthenticated()">
-              <li class="dropdown">
-                <a href="javascript:void(0)" data-toggle="dropdown"><i class="ion-ios-bell"></i> <span class="badge">3</span></a>
-                <ul class="dropdown-menu dropdown-menu-right">
-                  <li class="dropdown-header">Profile</li>
-                  <li>
-                    <a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">3</span> News </a>
-                  </li>
-                  <li>
-                    <a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">1</span> Messages </a>
-                  </li>
-                  <li class="divider"></li>
-                  <li class="dropdown-header">More</li>
-                  <li>
-                    <a tabindex="-1" href="javascript:void(0)">Edit Profile..</a>
-                  </li>
-                </ul>
-              </li>
-
-              <li class="dropdown dropdown-profile">
+            <ul class="nav navbar-nav navbar-right navbar-toolbar hidden-sm hidden-xs">
+              <a sec:authorize="!isAuthenticated()" th:href="@{/login}"><span class="navbar-page-title">Login through Discord</span></a>
+              <li class="dropdown dropdown-profile" sec:authorize="isAuthenticated()">
                 <a href="javascript:void(0)" data-toggle="dropdown">
                   <span class="m-r-sm" th:text="${user.getUsername()}"> <span class="caret"></span></span>
                   <img class="img-avatar img-avatar-48" alt="User profile pic" th:src="${user.getAvatarUrl()}"/>
@@ -328,7 +142,7 @@
                     <a href="base_pages_profile.html">Profile</a>
                   </li>
                   <li>
-                    <a href="base_pages_profile.html"><span class="badge badge-success pull-right">3</span> Blog</a>
+                    <a href="">Settings</a>
                   </li>
                   <li>
                     <a href="frontend_login_signup.html">Logout</a>
