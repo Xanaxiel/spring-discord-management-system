@@ -296,12 +296,7 @@
             </ul>
             <!-- .navbar-left -->
 
-            <ul class="nav navbar-nav navbar-right navbar-toolbar hidden-sm hidden-xs">
-              <li>
-                <!-- Opens the modal found at the bottom of the page -->
-                <a href="javascript:void(0)" data-toggle="modal" data-target="#apps-modal"><i class="ion-grid"></i></a>
-              </li>
-
+            <ul class="nav navbar-nav navbar-right navbar-toolbar hidden-sm hidden-xs" sec:authorize="isAuthenticated()">
               <li class="dropdown">
                 <a href="javascript:void(0)" data-toggle="dropdown"><i class="ion-ios-bell"></i> <span class="badge">3</span></a>
                 <ul class="dropdown-menu dropdown-menu-right">
@@ -320,10 +315,10 @@
                 </ul>
               </li>
 
-              <li class="dropdown dropdown-profile" sec:authorize="isAuthenticated()">
+              <li class="dropdown dropdown-profile">
                 <a href="javascript:void(0)" data-toggle="dropdown">
-                  <span class="m-r-sm" th:text="${#authentication.getName()}"> <span class="caret"></span></span>
-                  <img class="img-avatar img-avatar-48" alt="User profile pic"/>
+                  <span class="m-r-sm" th:text="${user.getUsername()}"> <span class="caret"></span></span>
+                  <img class="img-avatar img-avatar-48" alt="User profile pic" th:src="${user.getAvatarUrl()}"/>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
                   <li class="dropdown-header">
