@@ -1,6 +1,9 @@
 package pl.bmstefanski.discordms.web.entity.user;
 
 import java.time.LocalDateTime;
+import java.util.Map;
+import java.util.Set;
+import org.springframework.security.core.GrantedAuthority;
 import pl.bmstefanski.discordms.web.util.Buildable;
 
 public class UserBuilder implements Buildable<UserEntityImpl> {
@@ -13,6 +16,8 @@ public class UserBuilder implements Buildable<UserEntityImpl> {
   private String locale;
   private LocalDateTime created;
   private LocalDateTime lastLogin;
+  private Set<GrantedAuthority> authorities;
+  private Map<String, Object> attributes;
 
   public UserBuilder withIdentifier(long identifier) {
     this.identifier = identifier;
@@ -54,10 +59,21 @@ public class UserBuilder implements Buildable<UserEntityImpl> {
     return this;
   }
 
+  public UserBuilder withAuthorities(Set<GrantedAuthority> authorities) {
+    this.authorities = authorities;
+    return this;
+  }
+
+  public UserBuilder withAttributes(Map<String, Object> attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
   @Override
   public UserEntityImpl build() {
     return new UserEntityImpl(this.identifier, this.username, this.discriminator, this.avatarHash,
-        this.avatarUrl, this.locale, this.created, this.lastLogin);
+        this.avatarUrl, this.locale, this.created, this.lastLogin, this.authorities,
+        this.attributes);
   }
 
 }

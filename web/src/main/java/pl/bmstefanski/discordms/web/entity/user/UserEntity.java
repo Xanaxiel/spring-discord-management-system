@@ -1,9 +1,10 @@
 package pl.bmstefanski.discordms.web.entity.user;
 
 import java.time.LocalDateTime;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import pl.bmstefanski.discordms.web.entity.IdentifiableEntity;
 
-public interface UserEntity extends IdentifiableEntity<Long> {
+public interface UserEntity extends IdentifiableEntity<Long>, OAuth2User {
 
   String getUsername();
 

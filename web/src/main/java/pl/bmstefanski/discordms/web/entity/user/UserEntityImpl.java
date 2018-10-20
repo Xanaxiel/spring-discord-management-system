@@ -1,11 +1,19 @@
 package pl.bmstefanski.discordms.web.entity.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import org.springframework.security.core.GrantedAuthority;
 
+@JsonIgnoreProperties({"name", "attributes", "authorities"})
 @Entity
 @Table(name = "users")
 public class UserEntityImpl implements UserEntity, Serializable {
@@ -19,13 +27,17 @@ public class UserEntityImpl implements UserEntity, Serializable {
   private String locale;
   private LocalDateTime created;
   private LocalDateTime lastLogin;
+  @Transient
+  private Set<GrantedAuthority> authorities;
+  @Transient
+  private Map<String, Object> attributes;
 
   UserEntityImpl() {
   }
 
   UserEntityImpl(long identifier, String username, int discriminator,
       String avatarHash, String avatarUrl, String locale, LocalDateTime created,
-      LocalDateTime lastLogin) {
+      LocalDateTime lastLogin, Set<GrantedAuthority> authorities, Map<String, Object> attributes) {
     this.identifier = identifier;
     this.username = username;
     this.discriminator = discriminator;
@@ -34,6 +46,8 @@ public class UserEntityImpl implements UserEntity, Serializable {
     this.locale = locale;
     this.created = created;
     this.lastLogin = lastLogin;
+    this.authorities = authorities;
+    this.attributes = attributes;
   }
 
   @Override
@@ -109,6 +123,30 @@ public class UserEntityImpl implements UserEntity, Serializable {
   @Override
   public void setLastLogin(LocalDateTime lastLogin) {
     this.lastLogin = lastLogin;
+  }
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return this.authorities;
+  }
+
+  @Override
+  public Map<String, Object> getAttributes() {
+    if (this.attributes == null) {
+      this.attributes = new HashMap<>();
+      this.attributes.put("id", this.getIdentifier());
+      this.attributes.put("username", this.getUsername());
+      this.attributes.put("discriminator", this.getDiscriminator());
+      this.attributes.put("avatar", this.avatarHash);
+      this.attributes.put("locale", this.locale);
+    }
+
+    return this.attributes;
+  }
+
+  @Override
+  public String getName() {
+    return this.username;
   }
 
 }
