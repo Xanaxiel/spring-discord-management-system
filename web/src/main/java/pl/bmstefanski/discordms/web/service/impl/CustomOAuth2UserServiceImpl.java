@@ -41,20 +41,20 @@ public class CustomOAuth2UserServiceImpl implements CustomOAuth2UserService {
     List<GuildEntityImpl> guildEntities = new DiscordGuildsRequest(this.restOperations, httpHeaders).submitRequest();
     Set<GrantedAuthority> authorities = Collections.singleton(new OAuth2UserAuthority(userAttributes));
 
-    long idValue = Long.parseLong(userAttributes.get("id").toString());
-    Optional<UserEntityImpl> userEntity = this.userRepository.findById(idValue);
+    long userIdentifier = Long.parseLong(userAttributes.get("id").toString());
+    Optional<UserEntityImpl> userEntity = this.userRepository.findById(userIdentifier);
 
     if (!userEntity.isPresent()) {
       String avatarHash = userAttributes.get("avatar").toString();
 
       userEntity = Optional.of(new UserBuilder()
-          .withIdentifier(idValue)
+          .withIdentifier(userIdentifier)
           .withUsername(userAttributes.get("username").toString())
           .withDiscriminator(Integer.parseInt(userAttributes.get("discriminator").toString()))
           .withAvatarHash(avatarHash)
           .withLocale(userAttributes.get("locale").toString())
           .withEmail(userAttributes.get("email").toString())
-          .withAvatarUrl("https://cdn.discordapp.com/avatars/" + idValue + "/" + avatarHash)
+          .withAvatarUrl("https://cdn.discordapp.com/avatars/" + userIdentifier + "/" + avatarHash)
           .withCreated(LocalDateTime.now())
           .withLastLogin(LocalDateTime.now())
           .withAuthorities(authorities)
