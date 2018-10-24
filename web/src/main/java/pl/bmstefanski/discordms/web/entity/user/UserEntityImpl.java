@@ -1,22 +1,24 @@
 package pl.bmstefanski.discordms.web.entity.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import org.springframework.security.core.GrantedAuthority;
+import pl.bmstefanski.discordms.web.entity.guild.GuildEntityImpl;
 
 @JsonIgnoreProperties({"name", "attributes", "authorities"})
 @Entity
 @Table(name = "users")
-public class UserEntityImpl implements UserEntity, Serializable {
+public class UserEntityImpl implements UserEntity {
 
   @Id
   private long identifier;
@@ -31,13 +33,15 @@ public class UserEntityImpl implements UserEntity, Serializable {
   private Set<GrantedAuthority> authorities;
   @Transient
   private Map<String, Object> attributes;
+  @ElementCollection
+  private List<GuildEntityImpl> guildEntities;
 
   UserEntityImpl() {
   }
 
-  UserEntityImpl(long identifier, String username, int discriminator,
-      String avatarHash, String avatarUrl, String locale, LocalDateTime created,
-      LocalDateTime lastLogin, Set<GrantedAuthority> authorities, Map<String, Object> attributes) {
+  UserEntityImpl(long identifier, String username, int discriminator, String avatarHash,
+      String avatarUrl, String locale, LocalDateTime created, LocalDateTime lastLogin,
+      Set<GrantedAuthority> authorities, Map<String, Object> attributes, List<GuildEntityImpl> guildEntities) {
     this.identifier = identifier;
     this.username = username;
     this.discriminator = discriminator;
@@ -48,6 +52,7 @@ public class UserEntityImpl implements UserEntity, Serializable {
     this.lastLogin = lastLogin;
     this.authorities = authorities;
     this.attributes = attributes;
+    this.guildEntities = guildEntities;
   }
 
   @Override
@@ -147,6 +152,32 @@ public class UserEntityImpl implements UserEntity, Serializable {
   @Override
   public String getName() {
     return this.username;
+  }
+
+  @Override
+  public List<GuildEntityImpl> getGuildEntities() {
+    return guildEntities;
+  }
+
+  @Override
+  public void setGuildEntities(List<GuildEntityImpl> guildEntities) {
+    this.guildEntities = guildEntities;
+  }
+
+  @Override
+  public String toString() {
+    return "UserEntityImpl{" +
+        "identifier=" + identifier +
+        ", username='" + username + '\'' +
+        ", discriminator=" + discriminator +
+        ", avatarHash='" + avatarHash + '\'' +
+        ", avatarUrl='" + avatarUrl + '\'' +
+        ", locale='" + locale + '\'' +
+        ", created=" + created +
+        ", lastLogin=" + lastLogin +
+        ", authorities=" + authorities +
+        ", attributes=" + attributes +
+        '}';
   }
 
 }
