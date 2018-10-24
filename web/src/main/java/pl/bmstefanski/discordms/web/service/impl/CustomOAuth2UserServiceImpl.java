@@ -42,10 +42,15 @@ public class CustomOAuth2UserServiceImpl implements CustomOAuth2UserService {
     Set<GrantedAuthority> authorities = Collections.singleton(new OAuth2UserAuthority(userAttributes));
 
     long userIdentifier = Long.parseLong(userAttributes.get("id").toString());
+    int discriminator = Integer.parseInt(userAttributes.get("discriminator").toString());
+    String username = userAttributes.get("username").toString();
+    String locale = userAttributes.get("locale").toString();
+    String avatarHash = userAttributes.get("avatar").toString();
+    String email = userAttributes.get("email").toString();
+
     Optional<UserEntityImpl> userEntity = this.userRepository.findById(userIdentifier);
 
     if (!userEntity.isPresent()) {
-      String avatarHash = userAttributes.get("avatar").toString();
 
       userEntity = Optional.of(new UserBuilder()
           .withIdentifier(userIdentifier)
@@ -54,7 +59,6 @@ public class CustomOAuth2UserServiceImpl implements CustomOAuth2UserService {
           .withAvatarHash(avatarHash)
           .withLocale(userAttributes.get("locale").toString())
           .withEmail(userAttributes.get("email").toString())
-          .withAvatarUrl("https://cdn.discordapp.com/avatars/" + userIdentifier + "/" + avatarHash)
           .withCreated(LocalDateTime.now())
           .withLastLogin(LocalDateTime.now())
           .withAuthorities(authorities)
@@ -63,6 +67,14 @@ public class CustomOAuth2UserServiceImpl implements CustomOAuth2UserService {
           .build());
     } else {
       userEntity.get().setLastLogin(LocalDateTime.now());
+      userEntity.get().setUsername(username);
+      userEntity.get().setDiscriminator(discriminator);
+      userEntity.get().setLocale(locale);
+      userEntity.get().setAvatarHash(avatarHash);
+      userEntity.get().setEmail(email);
+      userEntity.get().setGuildEntities(guildEntities);
+      userEntity.get().setAuthorities(authorities);
+      userEntity.get().setAttributes(userAttributes);
     }
 
     return this.userRepository.save(userEntity.get());

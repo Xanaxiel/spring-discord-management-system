@@ -25,7 +25,6 @@ public class UserEntityImpl implements UserEntity {
   private String username;
   private int discriminator;
   private String avatarHash;
-  private String avatarUrl;
   private String locale;
   private String email;
   private LocalDateTime created;
@@ -41,14 +40,13 @@ public class UserEntityImpl implements UserEntity {
   }
 
   public UserEntityImpl(long identifier, String username, int discriminator, String avatarHash,
-      String avatarUrl, String locale, String email, LocalDateTime created, LocalDateTime lastLogin,
+      String locale, String email, LocalDateTime created, LocalDateTime lastLogin,
       Set<GrantedAuthority> authorities, Map<String, Object> attributes,
       List<GuildEntityImpl> guildEntities) {
     this.identifier = identifier;
     this.username = username;
     this.discriminator = discriminator;
     this.avatarHash = avatarHash;
-    this.avatarUrl = avatarUrl;
     this.locale = locale;
     this.email = email;
     this.created = created;
@@ -95,12 +93,7 @@ public class UserEntityImpl implements UserEntity {
 
   @Override
   public String getAvatarUrl() {
-    return this.avatarUrl;
-  }
-
-  @Override
-  public void setAvatarUrl(String avatarUrl) {
-    this.avatarUrl = avatarUrl;
+    return "https://cdn.discordapp.com/avatars/" + this.identifier + "/" + this.avatarHash;
   }
 
   @Override
@@ -157,9 +150,20 @@ public class UserEntityImpl implements UserEntity {
       this.attributes.put("discriminator", this.getDiscriminator());
       this.attributes.put("avatar", this.avatarHash);
       this.attributes.put("locale", this.locale);
+      this.attributes.put("email", this.email);
     }
 
     return this.attributes;
+  }
+
+  @Override
+  public void setAuthorities(Set<GrantedAuthority> authorities) {
+    this.authorities = authorities;
+  }
+
+  @Override
+  public void setAttributes(Map<String, Object> attributes) {
+    this.attributes = attributes;
   }
 
   @Override
@@ -184,7 +188,6 @@ public class UserEntityImpl implements UserEntity {
         ", username='" + username + '\'' +
         ", discriminator=" + discriminator +
         ", avatarHash='" + avatarHash + '\'' +
-        ", avatarUrl='" + avatarUrl + '\'' +
         ", locale='" + locale + '\'' +
         ", created=" + created +
         ", lastLogin=" + lastLogin +
