@@ -27,6 +27,7 @@ public class UserEntityImpl implements UserEntity {
   private String avatarHash;
   private String avatarUrl;
   private String locale;
+  private String email;
   private LocalDateTime created;
   private LocalDateTime lastLogin;
   @Transient
@@ -39,15 +40,17 @@ public class UserEntityImpl implements UserEntity {
   UserEntityImpl() {
   }
 
-  UserEntityImpl(long identifier, String username, int discriminator, String avatarHash,
-      String avatarUrl, String locale, LocalDateTime created, LocalDateTime lastLogin,
-      Set<GrantedAuthority> authorities, Map<String, Object> attributes, List<GuildEntityImpl> guildEntities) {
+  public UserEntityImpl(long identifier, String username, int discriminator, String avatarHash,
+      String avatarUrl, String locale, String email, LocalDateTime created, LocalDateTime lastLogin,
+      Set<GrantedAuthority> authorities, Map<String, Object> attributes,
+      List<GuildEntityImpl> guildEntities) {
     this.identifier = identifier;
     this.username = username;
     this.discriminator = discriminator;
     this.avatarHash = avatarHash;
     this.avatarUrl = avatarUrl;
     this.locale = locale;
+    this.email = email;
     this.created = created;
     this.lastLogin = lastLogin;
     this.authorities = authorities;
@@ -108,6 +111,16 @@ public class UserEntityImpl implements UserEntity {
   @Override
   public void setLocale(String locale) {
     this.locale = locale;
+  }
+
+  @Override
+  public String getEmail() {
+    return email;
+  }
+
+  @Override
+  public void setEmail(String email) {
+    this.email = email;
   }
 
   @Override

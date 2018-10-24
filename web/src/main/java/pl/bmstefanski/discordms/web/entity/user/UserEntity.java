@@ -29,6 +29,10 @@ public interface UserEntity extends IdentifiableEntity<Long>, OAuth2User, Serial
 
   void setLocale(String locale);
 
+  String getEmail();
+
+  void setEmail(String email);
+
   LocalDateTime getCreated();
 
   void setCreated(LocalDateTime created);

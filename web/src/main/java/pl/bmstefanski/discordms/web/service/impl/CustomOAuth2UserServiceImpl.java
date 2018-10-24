@@ -53,6 +53,7 @@ public class CustomOAuth2UserServiceImpl implements CustomOAuth2UserService {
           .withDiscriminator(Integer.parseInt(userAttributes.get("discriminator").toString()))
           .withAvatarHash(avatarHash)
           .withLocale(userAttributes.get("locale").toString())
+          .withEmail(userAttributes.get("email").toString())
           .withAvatarUrl("https://cdn.discordapp.com/avatars/" + idValue + "/" + avatarHash)
           .withCreated(LocalDateTime.now())
           .withLastLogin(LocalDateTime.now())

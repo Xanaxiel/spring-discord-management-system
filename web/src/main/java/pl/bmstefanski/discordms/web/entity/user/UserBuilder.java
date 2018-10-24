@@ -16,6 +16,7 @@ public class UserBuilder implements Buildable<UserEntityImpl> {
   private String avatarHash;
   private String avatarUrl;
   private String locale;
+  private String email;
   private LocalDateTime created;
   private LocalDateTime lastLogin;
   private Set<GrantedAuthority> authorities;
@@ -52,6 +53,11 @@ public class UserBuilder implements Buildable<UserEntityImpl> {
     return this;
   }
 
+  public UserBuilder withEmail(String email) {
+    this.email = email;
+    return this;
+  }
+
   public UserBuilder withCreated(LocalDateTime created) {
     this.created = created;
     return this;
@@ -80,7 +86,7 @@ public class UserBuilder implements Buildable<UserEntityImpl> {
   @Override
   public UserEntityImpl build() {
     return new UserEntityImpl(this.identifier, this.username, this.discriminator, this.avatarHash,
-        this.avatarUrl, this.locale, this.created, this.lastLogin, this.authorities,
+        this.avatarUrl, this.locale, this.email, this.created, this.lastLogin, this.authorities,
         this.attributes, this.guildEntities);
   }
 
