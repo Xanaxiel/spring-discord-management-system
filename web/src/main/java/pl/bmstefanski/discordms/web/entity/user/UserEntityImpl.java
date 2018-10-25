@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import org.springframework.security.core.GrantedAuthority;
 import pl.bmstefanski.discordms.web.entity.guild.GuildEntityImpl;
+import pl.bmstefanski.discordms.web.form.ProfileDetailsForm;
 
 @JsonIgnoreProperties({"name", "attributes", "authorities"})
 @Entity
@@ -35,14 +36,15 @@ public class UserEntityImpl implements UserEntity {
   private Map<String, Object> attributes;
   @ElementCollection
   private List<GuildEntityImpl> guildEntities;
+  private ProfileDetailsForm profileDetailsForm;
 
   UserEntityImpl() {
   }
 
-  public UserEntityImpl(long identifier, String username, int discriminator, String avatarHash,
+  UserEntityImpl(long identifier, String username, int discriminator, String avatarHash,
       String locale, String email, LocalDateTime created, LocalDateTime lastLogin,
       Set<GrantedAuthority> authorities, Map<String, Object> attributes,
-      List<GuildEntityImpl> guildEntities) {
+      List<GuildEntityImpl> guildEntities, ProfileDetailsForm profileDetailsForm) {
     this.identifier = identifier;
     this.username = username;
     this.discriminator = discriminator;
@@ -54,6 +56,7 @@ public class UserEntityImpl implements UserEntity {
     this.authorities = authorities;
     this.attributes = attributes;
     this.guildEntities = guildEntities;
+    this.profileDetailsForm = profileDetailsForm;
   }
 
   @Override
@@ -173,12 +176,22 @@ public class UserEntityImpl implements UserEntity {
 
   @Override
   public List<GuildEntityImpl> getGuildEntities() {
-    return guildEntities;
+    return this.guildEntities;
   }
 
   @Override
   public void setGuildEntities(List<GuildEntityImpl> guildEntities) {
     this.guildEntities = guildEntities;
+  }
+
+  @Override
+  public ProfileDetailsForm getProfileDetailsForm() {
+    return this.profileDetailsForm;
+  }
+
+  @Override
+  public void setProfileDetailsForm(ProfileDetailsForm profileDetailsForm) {
+    this.profileDetailsForm = profileDetailsForm;
   }
 
   @Override
@@ -189,10 +202,13 @@ public class UserEntityImpl implements UserEntity {
         ", discriminator=" + discriminator +
         ", avatarHash='" + avatarHash + '\'' +
         ", locale='" + locale + '\'' +
+        ", email='" + email + '\'' +
         ", created=" + created +
         ", lastLogin=" + lastLogin +
         ", authorities=" + authorities +
         ", attributes=" + attributes +
+        ", guildEntities=" + guildEntities +
+        ", profileDetailsForm=" + profileDetailsForm +
         '}';
   }
 

@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import pl.bmstefanski.discordms.web.entity.IdentifiableEntity;
 import pl.bmstefanski.discordms.web.entity.guild.GuildEntityImpl;
+import pl.bmstefanski.discordms.web.form.ProfileDetailsForm;
 
 public interface UserEntity extends IdentifiableEntity<Long>, OAuth2User, Serializable {
 
@@ -49,5 +50,9 @@ public interface UserEntity extends IdentifiableEntity<Long>, OAuth2User, Serial
   List<GuildEntityImpl> getGuildEntities();
 
   void setGuildEntities(List<GuildEntityImpl> guildEntities);
+
+  ProfileDetailsForm getProfileDetailsForm();
+
+  void setProfileDetailsForm(ProfileDetailsForm profileDetailsForm);
 
 }
