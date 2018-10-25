@@ -28,6 +28,10 @@ public class ProfileServiceImpl implements ProfileService {
       return "profile";
     }
 
+    if (failureUrl == null) {
+      return "redirect:" + "/home";
+    }
+
     return "redirect:" + failureUrl;
   }
 
