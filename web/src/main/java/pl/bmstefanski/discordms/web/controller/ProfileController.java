@@ -1,23 +1,21 @@
 package pl.bmstefanski.discordms.web.controller;
 
-import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import pl.bmstefanski.discordms.web.entity.user.UserEntityImpl;
-import pl.bmstefanski.discordms.web.repository.UserRepository;
+import pl.bmstefanski.discordms.web.service.ProfileService;
 
 @Controller
 public class ProfileController {
 
-  private final UserRepository userRepository;
+  private final ProfileService profileService;
 
   @Autowired
-  public ProfileController(UserRepository userRepository) {
-    this.userRepository = userRepository;
+  public ProfileController(ProfileService profileService) {
+    this.profileService = profileService;
   }
 
   @GetMapping("/profile")
@@ -27,14 +25,7 @@ public class ProfileController {
 
   @GetMapping("/profile/{id}")
   public String profile(@PathVariable long id, Model model, HttpServletRequest request) {
-    Optional<UserEntityImpl> user = userRepository.findById(id);
-
-    if (user.isPresent()) {
-      model.addAttribute("targetUser", user.get());
-      return "profile";
-    }
-
-    return "redirect:" + request.getHeader("Referer");
+    return this.profileService.findProfilePageByUserId(id, model, request.getHeader("Referer"));
   }
 
 }
