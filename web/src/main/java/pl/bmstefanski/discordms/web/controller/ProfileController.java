@@ -37,7 +37,11 @@ public class ProfileController {
   @PostMapping("/")
   public String profile(@ModelAttribute ProfileDetailsForm profileDetails,
       @AuthenticationPrincipal UserEntityImpl userEntity, Model model) {
-    userEntity.setProfileDetailsForm(profileDetails);
+    userEntity.setFirstName(profileDetails.getFirstName());
+    userEntity.setSecondName(profileDetails.getSecondName());
+    userEntity.setDescription(profileDetails.getDescription());
+    userEntity.setBirthDay(profileDetails.getBirthDay());
+
     this.userService.saveUser(userEntity);
     return this.profileService.findProfilePageByUserId(userEntity.getIdentifier(), model, "#");
   }

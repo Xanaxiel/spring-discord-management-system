@@ -1,5 +1,6 @@
 package pl.bmstefanski.discordms.web.service.impl;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
@@ -16,7 +17,6 @@ import org.springframework.web.client.RestOperations;
 import pl.bmstefanski.discordms.web.entity.guild.GuildEntityImpl;
 import pl.bmstefanski.discordms.web.entity.user.UserBuilder;
 import pl.bmstefanski.discordms.web.entity.user.UserEntityImpl;
-import pl.bmstefanski.discordms.web.form.ProfileDetailsForm;
 import pl.bmstefanski.discordms.web.repository.UserRepository;
 import pl.bmstefanski.discordms.web.request.DiscordGuildsRequest;
 import pl.bmstefanski.discordms.web.request.DiscordUserRequest;
@@ -65,7 +65,7 @@ public class CustomOAuth2UserServiceImpl implements CustomOAuth2UserService {
           .withAuthorities(authorities)
           .withAttributes(userAttributes)
           .withGuildEntities(guildEntities)
-          .withProfileDetailsForm(new ProfileDetailsForm())
+          .withBirthDay(LocalDate.now())
           .build());
     } else {
       userEntity.get().setLastLogin(LocalDateTime.now());
