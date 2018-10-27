@@ -95,7 +95,8 @@
                         <tbody>
                         <tr>
                           <td class="text-center">
-                            <img class="img-avatar img-avatar-48" src="/images/avatars/avatar2.jpg" th:src="'https://cdn.discordapp.com/icons/' + ${guild.getIdentifier()} + '/' + ${guild.getIcon()}" alt="">
+                            <img class="img-avatar img-avatar-48" src="#" th:if="${guild.getIcon()} != null" th:src="'https://cdn.discordapp.com/icons/' + ${guild.getIdentifier()} + '/' + ${guild.getIcon()}" alt="">
+                            <img class="img-avatar img-avatar-48" src="/images/avatars/avatar2.jpg" th:if="${guild.getIcon()} == null" alt="">
                           </td>
                           <td class="font-500" th:text="${guild.getName()}"></td>
                           <td th:text="${guild.getIdentifier()}"></td>
