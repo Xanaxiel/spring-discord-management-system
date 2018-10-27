@@ -10,7 +10,7 @@
         <li class="nav-item nav-drawer-header">General</li>
 
         <li class="nav-item active">
-          <a href="home.html"><i class="ion-ios-speedometer-outline"></i> Dashboard</a>
+          <a href="#" th:href="@{/home}"><i class="ion-ios-speedometer-outline"></i> Dashboard</a>
         </li>
 
         <li class="nav-item nav-item-has-subnav">
@@ -18,38 +18,38 @@
           <ul class="nav nav-subnav">
 
             <li>
-              <a href="base_ui_buttons.html"> Profile</a>
+              <a href="#" th:href="@{'/profile/' + ${user.getIdentifier()}}"> Profile</a>
             </li>
 
             <li>
-              <a href=""> Battles</a>
+              <a href="#"> Battles</a>
             </li>
 
             <li>
-              <a href=""> Voting</a>
+              <a href="#"> Voting</a>
             </li>
 
             <li>
-              <a href=""> Giveaway</a>
+              <a href="#"> Giveaway</a>
             </li>
 
             <li>
-              <a href=""> Friends</a>
+              <a href="#"> Friends</a>
             </li>
 
             <li>
-              <a href=""> Shop</a>
+              <a href="#"> Shop</a>
             </li>
 
           </ul>
         </li>
 
         <li class="nav-item">
-          <a href="home.html"><i class="ion-ios-people"></i> My teams</a>
+          <a href="#"><i class="ion-ios-people"></i> My teams</a>
         </li>
 
         <li class="nav-item active">
-          <a href="home.html"><i class="ion-ios-settings"></i> Settings</a>
+          <a href="#" th:href="/profile/"><i class="ion-ios-settings"></i> Settings</a>
         </li>
 
       </ul>

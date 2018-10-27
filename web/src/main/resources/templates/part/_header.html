@@ -38,20 +38,20 @@
           <li class="dropdown dropdown-profile">
             <a href="javascript:void(0)" data-toggle="dropdown">
               <span class="m-r-sm"><span th:text="${user.getUsername()}"></span> <span class="caret"></span></span>
-              <img class="img-avatar img-avatar-48" th:src="${user.getAvatarUrl()}" alt="User profile pic"/>
+              <img src="#" class="img-avatar img-avatar-48" th:src="${user.getAvatarUrl()}" alt="User profile pic"/>
             </a>
             <ul class="dropdown-menu dropdown-menu-right">
               <li class="dropdown-header">
                 Pages
               </li>
               <li>
-                <a href="base_pages_profile.html">Profile</a>
+                <a href="#" th:href="@{'/profile/' + ${user.getIdentifier()}}">Profile</a>
               </li>
               <li>
-                <a href="">Settings</a>
+                <a href="#" th:href="@{/profile/}">Settings</a>
               </li>
               <li>
-                <a href="frontend_login_signup.html">Logout</a>
+                <a href="#" th:href="@{/logout}">Logout</a>
               </li>
             </ul>
           </li>
