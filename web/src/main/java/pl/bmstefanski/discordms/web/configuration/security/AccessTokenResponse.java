@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 import org.springframework.security.oauth2.core.OAuth2AccessToken;
 import org.thymeleaf.util.StringUtils;
 
-class AccessTokenResponse implements Serializable {
+public class AccessTokenResponse implements Serializable {
 
   @JsonProperty("access_token")
   private String accessToken;
