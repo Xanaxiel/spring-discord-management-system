@@ -63,8 +63,8 @@ public interface UserEntity extends IdentifiableEntity<Long>, OAuth2User, Serial
 
   void setDescription(String description);
 
-  LocalDate getBirthDay();
+  LocalDate getBirthday();
 
-  void setBirthDay(LocalDate birthDay);
+  void setBirthday(LocalDate birthday);
 
 }

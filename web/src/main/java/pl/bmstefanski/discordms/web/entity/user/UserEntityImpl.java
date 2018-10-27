@@ -31,7 +31,7 @@ public class UserEntityImpl implements UserEntity {
   private String firstName;
   private String secondName;
   private String description;
-  private LocalDate birthDay;
+  private LocalDate birthday;
   private LocalDateTime created;
   private LocalDateTime lastLogin;
   @Transient
@@ -46,7 +46,7 @@ public class UserEntityImpl implements UserEntity {
 
   UserEntityImpl(long identifier, int discriminator, String username,
       String avatarHash, String locale, String email, String firstName, String secondName,
-      String description, LocalDate birthDay, LocalDateTime created,
+      String description, LocalDate birthday, LocalDateTime created,
       LocalDateTime lastLogin,
       Set<GrantedAuthority> authorities, Map<String, Object> attributes,
       List<GuildEntityImpl> guildEntities) {
@@ -59,7 +59,7 @@ public class UserEntityImpl implements UserEntity {
     this.firstName = firstName;
     this.secondName = secondName;
     this.description = description;
-    this.birthDay = birthDay;
+    this.birthday = birthday;
     this.created = created;
     this.lastLogin = lastLogin;
     this.authorities = authorities;
@@ -208,13 +208,13 @@ public class UserEntityImpl implements UserEntity {
   }
 
   @Override
-  public LocalDate getBirthDay() {
-    return this.birthDay;
+  public LocalDate getBirthday() {
+    return this.birthday;
   }
 
   @Override
-  public void setBirthDay(LocalDate birthDay) {
-    this.birthDay = birthDay;
+  public void setBirthday(LocalDate birthday) {
+    this.birthday = birthday;
   }
 
   @Override

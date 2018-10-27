@@ -25,12 +25,13 @@ public class UserBuilder implements Buildable<UserEntityImpl> {
   private String firstName;
   private String secondName;
   private String description;
-  private LocalDate birthDay;
+  private LocalDate birthday;
 
   public UserBuilder() {
     this.firstName = "N/A";
     this.secondName = "N/A";
     this.description = "N/A";
+    this.birthday = LocalDate.now();
   }
 
   public UserBuilder withIdentifier(long identifier) {
@@ -103,15 +104,15 @@ public class UserBuilder implements Buildable<UserEntityImpl> {
     return this;
   }
 
-  public UserBuilder withBirthDay(LocalDate birthDay) {
-    this.birthDay = birthDay;
+  public UserBuilder withBirthday(LocalDate birthDay) {
+    this.birthday = birthDay;
     return this;
   }
 
   @Override
   public UserEntityImpl build() {
     return new UserEntityImpl(this.identifier, this.discriminator, this.username, this.avatarHash,
-        this.locale, this.email, this.firstName, this.secondName, this.description, this.birthDay,
+        this.locale, this.email, this.firstName, this.secondName, this.description, this.birthday,
         this.created, this.lastLogin, this.authorities, this.attributes, this.guildEntities);
   }
 

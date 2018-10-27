@@ -11,7 +11,7 @@ public class ProfileDetailsForm implements Serializable {
   private String secondName;
   private String description;
   @DateTimeFormat(iso = ISO.DATE)
-  private LocalDate birthDay;
+  private LocalDate birthday;
 
   public String getFirstName() {
     return this.firstName;
@@ -37,12 +37,12 @@ public class ProfileDetailsForm implements Serializable {
     this.description = description;
   }
 
-  public void setBirthDay(LocalDate birthDay) {
-    this.birthDay = birthDay;
+  public void setBirthday(LocalDate birthday) {
+    this.birthday = birthday;
   }
 
-  public LocalDate getBirthDay() {
-    return this.birthDay;
+  public LocalDate getBirthday() {
+    return this.birthday;
   }
 
 }

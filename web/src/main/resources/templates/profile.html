@@ -28,12 +28,17 @@
           </div>
         </div>
 
+        <!---->
+
         <div class="row">
           <div class="col-md-4">
             <div class="card">
               <ul class="nav nav-tabs nav-stacked">
                 <li class="active">
-                  <a href="#profile-tab1" data-toggle="tab">General</a>
+                  <a href="#general" data-toggle="tab">General</a>
+                </li>
+                <li>
+                  <a href="#guilds" data-toggle="tab">Guilds</a>
                 </li>
               </ul>
             </div>
@@ -43,31 +48,70 @@
             <div class="card">
               <div class="card-block tab-content">
 
-                <div class="form-group">
-                  <div class="col-xs-6">
-                    <label>Name</label>
-                    <div class="form-control-static" th:text="${targetUser.getFirstName()}"></div>
+                <!-- general -->
+                <div class="tab-pane fade in active" id="general">
+                  <div class="form-group">
+                    <div class="col-xs-6">
+                      <label>Name</label>
+                      <div class="form-control-static" th:text="${targetUser.getFirstName()}"></div>
+                    </div>
+
+                    <div class="col-xs-6">
+                      <label>Surname</label>
+                      <div class="form-control-static" th:text="${targetUser.getSecondName()}"></div>
+                    </div>
                   </div>
 
-                  <div class="col-xs-6">
-                    <label>Surname</label>
-                    <div class="form-control-static" th:text="${targetUser.getSecondName()}"></div>
+                  <div class="form-group">
+                    <div class="col-xs-12">
+                      <label>Description</label>
+                      <div class="form-control-static" th:text="${targetUser.getDescription()}"></div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-6">
+                      <label>Birthday</label>
+                      <div class="form-control-static" th:text="${targetUser.getBirthday().toString()}"></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- general end -->
+
+                <!-- guilds -->
+                <div class="tab-pane fade in" id="guilds">
+                  <div class="table-responsive">
+                    <table class="table table-striped table-borderless table-vcenter">
+                      <thead>
+                      <tr>
+                        <th class="text-center w-10"><i class="ion-person"></i></th>
+                        <th>Name</th>
+                        <th style="width: 30%;">Identifier</th>
+                        <th style="width: 20%;">Permissions</th>
+                        <th class="text-center" style="width: 100px;">Owner</th>
+                      </tr>
+                      </thead>
+                      <th:block th:each="guild : ${targetUser.getGuildEntities()}">
+                        <tbody>
+                        <tr>
+                          <td class="text-center">
+                            <img class="img-avatar img-avatar-48" src="/images/avatars/avatar2.jpg" th:src="'https://cdn.discordapp.com/icons/' + ${guild.getIdentifier()} + '/' + ${guild.getIcon()}" alt="">
+                          </td>
+                          <td class="font-500" th:text="${guild.getName()}"></td>
+                          <td th:text="${guild.getIdentifier()}"></td>
+                          <td th:text="${guild.getPermissions()}"></td>
+                          <td class="text-center">
+                            <i th:if="${guild.isOwner()}" class="ion-checkmark text-green"></i>
+                            <i th:if="!${guild.isOwner()}" class="ion-close text-red"></i>
+                          </td>
+                        </tr>
+                      </th:block>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <div class="col-xs-12">
-                    <label>Description</label>
-                    <div class="form-control-static" th:text="${targetUser.getDescription()}"></div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <div class="col-xs-6">
-                    <label>Birth day</label>
-                    <div class="form-control-static" th:text="${targetUser.getBirthDay().toString()}"></div>
-                  </div>
-                </div>
+                <!-- guilds end -->
 
               </div>
             </div>

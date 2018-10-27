@@ -1,6 +1,5 @@
 package pl.bmstefanski.discordms.web.service.impl;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
@@ -65,7 +64,6 @@ public class CustomOAuth2UserServiceImpl implements CustomOAuth2UserService {
           .withAuthorities(authorities)
           .withAttributes(userAttributes)
           .withGuildEntities(guildEntities)
-          .withBirthDay(LocalDate.now())
           .build());
     } else {
       userEntity.get().setLastLogin(LocalDateTime.now());

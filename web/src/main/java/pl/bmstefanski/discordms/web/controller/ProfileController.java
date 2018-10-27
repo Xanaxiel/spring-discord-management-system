@@ -40,7 +40,7 @@ public class ProfileController {
     userEntity.setFirstName(profileDetails.getFirstName());
     userEntity.setSecondName(profileDetails.getSecondName());
     userEntity.setDescription(profileDetails.getDescription());
-    userEntity.setBirthDay(profileDetails.getBirthDay());
+    userEntity.setBirthday(profileDetails.getBirthday());
 
     this.userService.saveUser(userEntity);
     return this.profileService.findProfilePageByUserId(userEntity.getIdentifier(), model, "#");
