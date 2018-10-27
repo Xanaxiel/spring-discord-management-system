@@ -4,9 +4,15 @@ import java.io.Serializable;
 
 public class ProfileDetailsForm implements Serializable {
 
-  private String name = "N/A";
-  private String surname = "N/A";
-  private String description = "N/A";
+  private String name;
+  private String surname;
+  private String description;
+
+  public ProfileDetailsForm() {
+    this.name = "N/A";
+    this.surname = "N/A";
+    this.description = "N/A";
+  }
 
   public String getName() {
     return name;

@@ -35,7 +35,7 @@ public class ProfileController {
   }
 
   @PostMapping("/")
-  public String profile(@ModelAttribute("profileDetails") ProfileDetailsForm profileDetails,
+  public String profile(@ModelAttribute ProfileDetailsForm profileDetails,
       @AuthenticationPrincipal UserEntityImpl userEntity, Model model) {
     userEntity.setProfileDetailsForm(profileDetails);
     this.userService.saveUser(userEntity);
