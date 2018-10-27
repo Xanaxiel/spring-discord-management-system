@@ -23,9 +23,9 @@ public class RestOAuth2AccessTokenResponseClient implements
   }
 
   @Override
-  public OAuth2AccessTokenResponse getTokenResponse(
-      OAuth2AuthorizationCodeGrantRequest codeGrantRequest)
+  public OAuth2AccessTokenResponse getTokenResponse(OAuth2AuthorizationCodeGrantRequest codeGrantRequest)
       throws OAuth2AuthenticationException {
+
     ClientRegistration clientRegistration = codeGrantRequest.getClientRegistration();
     OAuth2AuthorizationExchange authorizationExchange = codeGrantRequest.getAuthorizationExchange();
 

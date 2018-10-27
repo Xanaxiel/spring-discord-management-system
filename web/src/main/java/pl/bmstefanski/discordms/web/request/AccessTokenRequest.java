@@ -24,7 +24,8 @@ public class AccessTokenRequest implements Requestable<AccessTokenResponse> {
     httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
     httpHeaders.add(HttpHeaders.USER_AGENT, "DiscordMS");
 
-    return restOperations.exchange("https://discordapp.com/api/oauth2/token",
+    return restOperations.exchange(
+        "https://discordapp.com/api/oauth2/token",
         HttpMethod.POST,
         new HttpEntity<>(this.multiValueMap, httpHeaders),
         AccessTokenResponse.class
