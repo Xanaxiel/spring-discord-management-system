@@ -14,7 +14,7 @@ public class ProfileDetailsForm implements Serializable {
   private LocalDate birthDay;
 
   public String getFirstName() {
-    return firstName;
+    return this.firstName;
   }
 
   public void setFirstName(String firstName) {
@@ -22,7 +22,7 @@ public class ProfileDetailsForm implements Serializable {
   }
 
   public String getSecondName() {
-    return secondName;
+    return this.secondName;
   }
 
   public void setSecondName(String secondName) {
@@ -30,7 +30,7 @@ public class ProfileDetailsForm implements Serializable {
   }
 
   public String getDescription() {
-    return description;
+    return this.description;
   }
 
   public void setDescription(String description) {
@@ -42,7 +42,7 @@ public class ProfileDetailsForm implements Serializable {
   }
 
   public LocalDate getBirthDay() {
-    return birthDay;
+    return this.birthDay;
   }
 
 }
