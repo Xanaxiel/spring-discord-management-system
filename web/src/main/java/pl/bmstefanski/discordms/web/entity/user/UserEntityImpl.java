@@ -1,6 +1,7 @@
 package pl.bmstefanski.discordms.web.entity.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashMap;
@@ -14,7 +15,6 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import org.springframework.security.core.GrantedAuthority;
 import pl.bmstefanski.discordms.web.entity.guild.GuildEntityImpl;
-import pl.bmstefanski.discordms.web.form.ProfileDetailsForm;
 
 @JsonIgnoreProperties({"name", "attributes", "authorities"})
 @Entity
@@ -23,11 +23,15 @@ public class UserEntityImpl implements UserEntity {
 
   @Id
   private long identifier;
-  private String username;
   private int discriminator;
+  private String username;
   private String avatarHash;
   private String locale;
   private String email;
+  private String firstName;
+  private String secondName;
+  private String description;
+  private LocalDate birthDay;
   private LocalDateTime created;
   private LocalDateTime lastLogin;
   @Transient
@@ -36,27 +40,31 @@ public class UserEntityImpl implements UserEntity {
   private Map<String, Object> attributes;
   @ElementCollection
   private List<GuildEntityImpl> guildEntities;
-  private ProfileDetailsForm profileDetailsForm;
 
   UserEntityImpl() {
   }
 
-  UserEntityImpl(long identifier, String username, int discriminator, String avatarHash,
-      String locale, String email, LocalDateTime created, LocalDateTime lastLogin,
+  UserEntityImpl(long identifier, int discriminator, String username,
+      String avatarHash, String locale, String email, String firstName, String secondName,
+      String description, LocalDate birthDay, LocalDateTime created,
+      LocalDateTime lastLogin,
       Set<GrantedAuthority> authorities, Map<String, Object> attributes,
-      List<GuildEntityImpl> guildEntities, ProfileDetailsForm profileDetailsForm) {
+      List<GuildEntityImpl> guildEntities) {
     this.identifier = identifier;
-    this.username = username;
     this.discriminator = discriminator;
+    this.username = username;
     this.avatarHash = avatarHash;
     this.locale = locale;
     this.email = email;
+    this.firstName = firstName;
+    this.secondName = secondName;
+    this.description = description;
+    this.birthDay = birthDay;
     this.created = created;
     this.lastLogin = lastLogin;
     this.authorities = authorities;
     this.attributes = attributes;
     this.guildEntities = guildEntities;
-    this.profileDetailsForm = profileDetailsForm;
   }
 
   @Override
@@ -145,21 +153,6 @@ public class UserEntityImpl implements UserEntity {
   }
 
   @Override
-  public Map<String, Object> getAttributes() {
-    if (this.attributes == null) {
-      this.attributes = new HashMap<>();
-      this.attributes.put("id", this.getIdentifier());
-      this.attributes.put("username", this.getUsername());
-      this.attributes.put("discriminator", this.getDiscriminator());
-      this.attributes.put("avatar", this.avatarHash);
-      this.attributes.put("locale", this.locale);
-      this.attributes.put("email", this.email);
-    }
-
-    return this.attributes;
-  }
-
-  @Override
   public void setAuthorities(Set<GrantedAuthority> authorities) {
     this.authorities = authorities;
   }
@@ -185,31 +178,58 @@ public class UserEntityImpl implements UserEntity {
   }
 
   @Override
-  public ProfileDetailsForm getProfileDetailsForm() {
-    return this.profileDetailsForm;
+  public String getFirstName() {
+    return this.firstName;
   }
 
   @Override
-  public void setProfileDetailsForm(ProfileDetailsForm profileDetailsForm) {
-    this.profileDetailsForm = profileDetailsForm;
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
   }
 
   @Override
-  public String toString() {
-    return "UserEntityImpl{" +
-        "identifier=" + identifier +
-        ", username='" + username + '\'' +
-        ", discriminator=" + discriminator +
-        ", avatarHash='" + avatarHash + '\'' +
-        ", locale='" + locale + '\'' +
-        ", email='" + email + '\'' +
-        ", created=" + created +
-        ", lastLogin=" + lastLogin +
-        ", authorities=" + authorities +
-        ", attributes=" + attributes +
-        ", guildEntities=" + guildEntities +
-        ", profileDetailsForm=" + profileDetailsForm +
-        '}';
+  public String getSecondName() {
+    return this.secondName;
+  }
+
+  @Override
+  public void setSecondName(String secondName) {
+    this.secondName = secondName;
+  }
+
+  @Override
+  public String getDescription() {
+    return this.description;
+  }
+
+  @Override
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  @Override
+  public LocalDate getBirthDay() {
+    return this.birthDay;
+  }
+
+  @Override
+  public void setBirthDay(LocalDate birthDay) {
+    this.birthDay = birthDay;
+  }
+
+  @Override
+  public Map<String, Object> getAttributes() {
+    if (this.attributes == null) {
+      this.attributes = new HashMap<>();
+      this.attributes.put("id", this.getIdentifier());
+      this.attributes.put("username", this.getUsername());
+      this.attributes.put("discriminator", this.getDiscriminator());
+      this.attributes.put("avatar", this.avatarHash);
+      this.attributes.put("locale", this.locale);
+      this.attributes.put("email", this.email);
+    }
+
+    return this.attributes;
   }
 
 }

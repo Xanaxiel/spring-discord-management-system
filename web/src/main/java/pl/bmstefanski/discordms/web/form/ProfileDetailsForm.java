@@ -1,33 +1,32 @@
 package pl.bmstefanski.discordms.web.form;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 public class ProfileDetailsForm implements Serializable {
 
-  private String name;
-  private String surname;
+  private String firstName;
+  private String secondName;
   private String description;
+  @DateTimeFormat(iso = ISO.DATE)
+  private LocalDate birthDay;
 
-  public ProfileDetailsForm() {
-    this.name = "N/A";
-    this.surname = "N/A";
-    this.description = "N/A";
+  public String getFirstName() {
+    return firstName;
   }
 
-  public String getName() {
-    return name;
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public String getSecondName() {
+    return secondName;
   }
 
-  public String getSurname() {
-    return surname;
-  }
-
-  public void setSurname(String surname) {
-    this.surname = surname;
+  public void setSecondName(String secondName) {
+    this.secondName = secondName;
   }
 
   public String getDescription() {
@@ -36,6 +35,14 @@ public class ProfileDetailsForm implements Serializable {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public void setBirthDay(LocalDate birthDay) {
+    this.birthDay = birthDay;
+  }
+
+  public LocalDate getBirthDay() {
+    return birthDay;
   }
 
 }
