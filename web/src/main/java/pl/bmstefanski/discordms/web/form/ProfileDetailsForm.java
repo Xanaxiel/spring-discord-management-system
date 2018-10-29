@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
+import org.springframework.web.multipart.MultipartFile;
 
 public class ProfileDetailsForm implements Serializable {
 
@@ -12,6 +13,7 @@ public class ProfileDetailsForm implements Serializable {
   private String description;
   @DateTimeFormat(iso = ISO.DATE)
   private LocalDate birthday;
+  private MultipartFile banner;
 
   public String getFirstName() {
     return this.firstName;
@@ -43,6 +45,14 @@ public class ProfileDetailsForm implements Serializable {
 
   public LocalDate getBirthday() {
     return this.birthday;
+  }
+
+  public MultipartFile getBanner() {
+    return this.banner;
+  }
+
+  public void setBanner(MultipartFile banner) {
+    this.banner = banner;
   }
 
 }

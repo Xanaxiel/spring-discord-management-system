@@ -18,7 +18,9 @@
       <!-- Page Content -->
       <div class="container-fluid p-y-md">
         <div class="card card-profile">
-          <div class="card-profile-img bg-img" style="background-image: url(/images/misc/base_pages_profile_header_bg.jpg);">
+          <div class="card-profile-img bg-img" th:if="${targetUser.getBannerUrl() != null}" th:style="'background-image: url(' + ${targetUser.getBannerUrl()} + ');'">
+          </div>
+          <div class="card-profile-img bg-img" th:if="${targetUser.getBannerUrl() == null}" style="background-image: url('/images/misc/banner.jpg');">
           </div>
           <div class="card-block card-profile-block text-xs-center text-sm-left">
             <img class="img-avatar img-avatar-96" src="#" th:src="${targetUser.getAvatarUrl()}" alt=""/>
