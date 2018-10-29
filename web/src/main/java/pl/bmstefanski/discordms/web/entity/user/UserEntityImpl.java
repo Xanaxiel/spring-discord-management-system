@@ -31,6 +31,7 @@ public class UserEntityImpl implements UserEntity {
   private String firstName;
   private String secondName;
   private String description;
+  private String bannerUrl;
   private LocalDate birthday;
   private LocalDateTime created;
   private LocalDateTime lastLogin;
@@ -46,7 +47,7 @@ public class UserEntityImpl implements UserEntity {
 
   UserEntityImpl(long identifier, int discriminator, String username,
       String avatarHash, String locale, String email, String firstName, String secondName,
-      String description, LocalDate birthday, LocalDateTime created,
+      String description, String bannerUrl, LocalDate birthday, LocalDateTime created,
       LocalDateTime lastLogin,
       Set<GrantedAuthority> authorities, Map<String, Object> attributes,
       List<GuildEntityImpl> guildEntities) {
@@ -59,6 +60,7 @@ public class UserEntityImpl implements UserEntity {
     this.firstName = firstName;
     this.secondName = secondName;
     this.description = description;
+    this.bannerUrl = bannerUrl;
     this.birthday = birthday;
     this.created = created;
     this.lastLogin = lastLogin;
@@ -205,6 +207,16 @@ public class UserEntityImpl implements UserEntity {
   @Override
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  @Override
+  public String getBannerUrl() {
+    return this.bannerUrl;
+  }
+
+  @Override
+  public void setBannerUrl(String bannerUrl) {
+    this.bannerUrl = bannerUrl;
   }
 
   @Override

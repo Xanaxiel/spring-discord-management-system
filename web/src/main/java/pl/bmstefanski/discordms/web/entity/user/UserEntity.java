@@ -63,6 +63,10 @@ public interface UserEntity extends IdentifiableEntity<Long>, OAuth2User, Serial
 
   void setDescription(String description);
 
+  String getBannerUrl();
+
+  void setBannerUrl(String bannerUrl);
+
   LocalDate getBirthday();
 
   void setBirthday(LocalDate birthday);

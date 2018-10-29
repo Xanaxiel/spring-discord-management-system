@@ -25,6 +25,7 @@ public class UserBuilder implements Buildable<UserEntityImpl> {
   private String firstName;
   private String secondName;
   private String description;
+  private String bannerUrl;
   private LocalDate birthday;
 
   public UserBuilder() {
@@ -32,6 +33,11 @@ public class UserBuilder implements Buildable<UserEntityImpl> {
     this.secondName = "N/A";
     this.description = "N/A";
     this.birthday = LocalDate.now();
+  }
+
+  public UserBuilder withBannerUrl(String bannerUrl) {
+    this.bannerUrl = bannerUrl;
+    return this;
   }
 
   public UserBuilder withIdentifier(long identifier) {
@@ -112,8 +118,9 @@ public class UserBuilder implements Buildable<UserEntityImpl> {
   @Override
   public UserEntityImpl build() {
     return new UserEntityImpl(this.identifier, this.discriminator, this.username, this.avatarHash,
-        this.locale, this.email, this.firstName, this.secondName, this.description, this.birthday,
-        this.created, this.lastLogin, this.authorities, this.attributes, this.guildEntities);
+        this.locale, this.email, this.firstName, this.secondName, this.description, this.bannerUrl,
+        this.birthday, this.created, this.lastLogin, this.authorities, this.attributes,
+        this.guildEntities);
   }
 
 }
