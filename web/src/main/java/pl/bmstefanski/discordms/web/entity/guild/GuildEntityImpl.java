@@ -4,12 +4,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GuildEntityImpl implements GuildEntity {
 
-  private boolean owner;
-  private long permissions;
-  private String icon;
   @JsonProperty("id")
   private long identifier;
+  private long permissions;
+  private boolean owner;
   private String name;
+  private String icon;
 
   GuildEntityImpl() {
   }

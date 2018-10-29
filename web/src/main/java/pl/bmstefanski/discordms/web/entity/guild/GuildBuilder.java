@@ -4,11 +4,11 @@ import pl.bmstefanski.discordms.web.util.Buildable;
 
 public class GuildBuilder implements Buildable<GuildEntityImpl> {
 
-  private boolean owner;
-  private long permissions;
-  private String icon;
   private long identifier;
+  private long permissions;
+  private boolean owner;
   private String name;
+  private String icon;
 
   public GuildBuilder withOwner(boolean owner) {
     this.owner = owner;

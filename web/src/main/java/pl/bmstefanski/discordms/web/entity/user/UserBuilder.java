@@ -12,21 +12,21 @@ import pl.bmstefanski.discordms.web.util.Buildable;
 public class UserBuilder implements Buildable<UserEntityImpl> {
 
   private long identifier;
-  private String username;
   private int discriminator;
+  private String username;
   private String avatarHash;
   private String locale;
   private String email;
-  private LocalDateTime created;
-  private LocalDateTime lastLogin;
-  private Set<GrantedAuthority> authorities;
-  private Map<String, Object> attributes;
-  private List<GuildEntityImpl> guildEntities;
   private String firstName;
   private String secondName;
   private String description;
   private String bannerUrl;
   private LocalDate birthday;
+  private LocalDateTime created;
+  private LocalDateTime lastLogin;
+  private Set<GrantedAuthority> authorities;
+  private Map<String, Object> attributes;
+  private List<GuildEntityImpl> guildEntities;
 
   public UserBuilder() {
     this.firstName = "N/A";
