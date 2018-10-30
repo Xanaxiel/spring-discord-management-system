@@ -18,7 +18,9 @@
       <!-- Page Content -->
       <div class="container-fluid p-y-md">
         <div class="card card-profile">
-          <div class="card-profile-img bg-img" th:style="'background-image: url(' + ${user.getBannerUrl()} + ');'">
+          <div class="card-profile-img bg-img" th:if="${user.getBannerUrl() != null}" th:style="'background-image: url(' + ${user.getBannerUrl()} + ');'">
+          </div>
+          <div class="card-profile-img bg-img" th:if="${user.getBannerUrl() == null}" style="background-image: url('/images/misc/banner.jpg');">
           </div>
           <div class="card-block card-profile-block text-xs-center text-sm-left">
             <img class="img-avatar img-avatar-96" src="#" th:src="${user.getAvatarUrl()}" alt=""/>
@@ -64,7 +66,7 @@
                     <div class="form-group">
                       <div class="col-xs-12">
                         <div class="form-material">
-                          <textarea class="form-control" id="description" name="description" rows="8" maxlength="255" placeholder="Please add a description." ></textarea>
+                          <textarea class="form-control" id="description" name="description" rows="8" maxlength="255" placeholder="Please add a description."></textarea>
                           <label for="description">Description</label>
                           <div class="help-block text-right">A short brief</div>
                         </div>
