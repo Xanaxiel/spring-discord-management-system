@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
-import pl.bmstefanski.discordms.web.service.FileStorageService;
+import pl.bmstefanski.discordms.web.file.FileStorageService;
 
 @EntityScan(basePackageClasses = {Jsr310JpaConverters.class, WebApplicationBootstrap.class})
 @SpringBootApplication

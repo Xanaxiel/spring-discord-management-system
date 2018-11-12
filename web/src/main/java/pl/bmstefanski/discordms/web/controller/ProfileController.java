@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.bmstefanski.discordms.web.entity.user.UserEntityImpl;
-import pl.bmstefanski.discordms.web.form.ProfileDetailsForm;
-import pl.bmstefanski.discordms.web.service.ProfileService;
-import pl.bmstefanski.discordms.web.service.UserService;
+import pl.bmstefanski.discordms.web.user.UserEntityImpl;
+import pl.bmstefanski.discordms.web.profile.ProfileDetailsForm;
+import pl.bmstefanski.discordms.web.profile.ProfileService;
+import pl.bmstefanski.discordms.web.user.UserService;
 
 @RequestMapping("/profile")
 @Controller
