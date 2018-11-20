@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.bmstefanski.discordms.web.user.UserEntityImpl;
+import pl.bmstefanski.discordms.web.user.User;
 import pl.bmstefanski.discordms.web.user.UserService;
 
 @RequestMapping("/profile")
@@ -34,7 +34,7 @@ public class ProfileController {
 
   @PostMapping("/")
   public String profile(@ModelAttribute ProfileDetailsForm profileDetails,
-      @AuthenticationPrincipal UserEntityImpl userEntity, Model model) {
+      @AuthenticationPrincipal User userEntity, Model model) {
     this.userService.convertProfileDetailsToUserEntity(userEntity, profileDetails);
     return this.profileService.findProfilePageByUserId(userEntity.getIdentifier(), model, "#");
   }

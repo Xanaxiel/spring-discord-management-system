@@ -15,7 +15,7 @@ import org.springframework.security.oauth2.core.user.OAuth2UserAuthority;
 import org.springframework.web.client.RestOperations;
 import pl.bmstefanski.discordms.web.auth.DiscordGuildsRequest;
 import pl.bmstefanski.discordms.web.auth.DiscordUserRequest;
-import pl.bmstefanski.discordms.web.guild.GuildEntityImpl;
+import pl.bmstefanski.discordms.web.guild.Guild;
 
 public class CustomOAuth2UserServiceImpl implements CustomOAuth2UserService {
 
@@ -34,7 +34,7 @@ public class CustomOAuth2UserServiceImpl implements CustomOAuth2UserService {
     httpHeaders.set(HttpHeaders.USER_AGENT, "DiscordMS");
 
     Map<String, Object> userAttributes = new DiscordUserRequest(this.restOperations, httpHeaders).submitRequest();
-    List<GuildEntityImpl> guildEntities = new DiscordGuildsRequest(this.restOperations, httpHeaders).submitRequest();
+    List<Guild> guildEntities = new DiscordGuildsRequest(this.restOperations, httpHeaders).submitRequest();
     Set<GrantedAuthority> authorities = Collections.singleton(new OAuth2UserAuthority(userAttributes));
 
     long userIdentifier = Long.parseLong(userAttributes.get("id").toString());
@@ -44,7 +44,7 @@ public class CustomOAuth2UserServiceImpl implements CustomOAuth2UserService {
     String avatarHash = userAttributes.get("avatar").toString();
     String email = userAttributes.get("email").toString();
 
-    Optional<UserEntityImpl> userEntity = this.userRepository.findById(userIdentifier);
+    Optional<User> userEntity = this.userRepository.findById(userIdentifier);
 
     if (!userEntity.isPresent()) {
 

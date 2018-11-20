@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.springframework.security.core.GrantedAuthority;
-import pl.bmstefanski.discordms.web.guild.GuildEntityImpl;
+import pl.bmstefanski.discordms.web.guild.Guild;
 import pl.bmstefanski.discordms.web.util.Buildable;
 
-public class UserBuilder implements Buildable<UserEntityImpl> {
+public class UserBuilder implements Buildable<User> {
 
   private long identifier;
   private int discriminator;
@@ -26,7 +26,7 @@ public class UserBuilder implements Buildable<UserEntityImpl> {
   private LocalDateTime lastLogin;
   private Set<GrantedAuthority> authorities;
   private Map<String, Object> attributes;
-  private List<GuildEntityImpl> guildEntities;
+  private List<Guild> guildEntities;
 
   public UserBuilder() {
     this.firstName = "N/A";
@@ -90,7 +90,7 @@ public class UserBuilder implements Buildable<UserEntityImpl> {
     return this;
   }
 
-  public UserBuilder withGuildEntities(List<GuildEntityImpl> guildEntities) {
+  public UserBuilder withGuildEntities(List<Guild> guildEntities) {
     this.guildEntities = guildEntities;
     return this;
   }
@@ -116,8 +116,8 @@ public class UserBuilder implements Buildable<UserEntityImpl> {
   }
 
   @Override
-  public UserEntityImpl build() {
-    return new UserEntityImpl(this.identifier, this.discriminator, this.username, this.avatarHash,
+  public User build() {
+    return new User(this.identifier, this.discriminator, this.username, this.avatarHash,
         this.locale, this.email, this.firstName, this.secondName, this.description, this.bannerUrl,
         this.birthday, this.created, this.lastLogin, this.authorities, this.attributes,
         this.guildEntities);

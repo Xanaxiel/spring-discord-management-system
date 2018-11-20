@@ -6,10 +6,10 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestOperations;
-import pl.bmstefanski.discordms.web.guild.GuildEntityImpl;
+import pl.bmstefanski.discordms.web.guild.Guild;
 import pl.bmstefanski.discordms.web.util.Requestable;
 
-public class DiscordGuildsRequest implements Requestable<List<GuildEntityImpl>> {
+public class DiscordGuildsRequest implements Requestable<List<Guild>> {
 
   private final RestOperations restOperations;
   private final HttpHeaders httpHeaders;
@@ -20,12 +20,12 @@ public class DiscordGuildsRequest implements Requestable<List<GuildEntityImpl>> 
   }
 
   @Override
-  public List<GuildEntityImpl> submitRequest() {
+  public List<Guild> submitRequest() {
     return this.restOperations.exchange(
         "https://discordapp.com/api/users/@me/guilds",
         HttpMethod.GET,
         new HttpEntity<>(httpHeaders),
-        new ParameterizedTypeReference<List<GuildEntityImpl>>() {}
+        new ParameterizedTypeReference<List<Guild>>() {}
     ).getBody();
   }
 

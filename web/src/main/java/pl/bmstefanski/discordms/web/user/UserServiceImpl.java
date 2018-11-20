@@ -19,19 +19,19 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public void saveUser(UserEntity userEntity) {
-    this.userRepository.save((UserEntityImpl) userEntity);
+  public void saveUser(User user) {
+    this.userRepository.save(user);
   }
 
   @Override
-  public void convertProfileDetailsToUserEntity(UserEntity userEntity, ProfileDetailsForm form) {
-    userEntity.setFirstName(this.validateFormField(userEntity.getFirstName()));
-    userEntity.setSecondName(this.validateFormField(userEntity.getSecondName()));
-    userEntity.setDescription(this.validateFormField(userEntity.getDescription()));
-    userEntity.setBirthday(form.getBirthday() == null ? LocalDate.now() : form.getBirthday());
-    userEntity.setBannerUrl(this.fileStorageService.getFileUrl(form.getBanner()));
+  public void convertProfileDetailsToUserEntity(User user, ProfileDetailsForm form) {
+    user.setFirstName(this.validateFormField(user.getFirstName()));
+    user.setSecondName(this.validateFormField(user.getSecondName()));
+    user.setDescription(this.validateFormField(user.getDescription()));
+    user.setBirthday(form.getBirthday() == null ? LocalDate.now() : form.getBirthday());
+    user.setBannerUrl(this.fileStorageService.getFileUrl(form.getBanner()));
 
-    this.saveUser(userEntity);
+    this.saveUser(user);
   }
 
   private String validateFormField(String value) {

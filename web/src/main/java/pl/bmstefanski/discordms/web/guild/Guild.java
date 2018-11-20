@@ -1,8 +1,10 @@
 package pl.bmstefanski.discordms.web.guild;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.io.Serializable;
+import pl.bmstefanski.discordms.web.util.IdentifiableEntity;
 
-public class GuildEntityImpl implements GuildEntity {
+public class Guild implements Serializable, IdentifiableEntity<Long> {
 
   @JsonProperty("id")
   private long identifier;
@@ -11,10 +13,7 @@ public class GuildEntityImpl implements GuildEntity {
   private String name;
   private String icon;
 
-  GuildEntityImpl() {
-  }
-
-  GuildEntityImpl(boolean owner, long permissions, String icon, long identifier, String name) {
+  Guild(boolean owner, long permissions, String icon, long identifier, String name) {
     this.owner = owner;
     this.permissions = permissions;
     this.icon = icon;
@@ -22,32 +21,26 @@ public class GuildEntityImpl implements GuildEntity {
     this.name = name;
   }
 
-  @Override
   public boolean isOwner() {
     return owner;
   }
 
-  @Override
   public void setOwner(boolean owner) {
     this.owner = owner;
   }
 
-  @Override
   public long getPermissions() {
     return permissions;
   }
 
-  @Override
   public void setPermissions(long permissions) {
     this.permissions = permissions;
   }
 
-  @Override
   public String getIcon() {
     return icon;
   }
 
-  @Override
   public void setIcon(String icon) {
     this.icon = icon;
   }
@@ -57,19 +50,17 @@ public class GuildEntityImpl implements GuildEntity {
     return identifier;
   }
 
-  @Override
   public String getName() {
     return name;
   }
 
-  @Override
   public void setName(String name) {
     this.name = name;
   }
 
   @Override
   public String toString() {
-    return "GuildEntityImpl{" +
+    return "Guild{" +
         "owner=" + owner +
         ", permissions=" + permissions +
         ", icon='" + icon + '\'' +

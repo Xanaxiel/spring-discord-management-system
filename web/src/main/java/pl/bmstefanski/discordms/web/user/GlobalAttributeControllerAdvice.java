@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 public class GlobalAttributeControllerAdvice {
 
   @ModelAttribute("user")
-  public UserEntityImpl userAttribute(@AuthenticationPrincipal UserEntityImpl user) {
+  public User userAttribute(@AuthenticationPrincipal User user) {
     return user;
   }
 

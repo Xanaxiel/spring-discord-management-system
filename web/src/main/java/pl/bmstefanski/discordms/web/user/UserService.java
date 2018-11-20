@@ -4,8 +4,8 @@ import pl.bmstefanski.discordms.web.profile.ProfileDetailsForm;
 
 public interface UserService {
 
-  void saveUser(UserEntity userEntity);
+  void saveUser(User user);
 
-  void convertProfileDetailsToUserEntity(UserEntity userEntity, ProfileDetailsForm form);
+  void convertProfileDetailsToUserEntity(User user, ProfileDetailsForm form);
 
 }

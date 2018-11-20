@@ -2,7 +2,7 @@ package pl.bmstefanski.discordms.web.guild;
 
 import pl.bmstefanski.discordms.web.util.Buildable;
 
-public class GuildBuilder implements Buildable<GuildEntityImpl> {
+public class GuildBuilder implements Buildable<Guild> {
 
   private long identifier;
   private long permissions;
@@ -36,8 +36,8 @@ public class GuildBuilder implements Buildable<GuildEntityImpl> {
   }
 
   @Override
-  public GuildEntityImpl build() {
-    return new GuildEntityImpl(this.owner, this.permissions, this.icon, this.identifier, this.name);
+  public Guild build() {
+    return new Guild(this.owner, this.permissions, this.icon, this.identifier, this.name);
   }
 
 }

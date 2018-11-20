@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 import pl.bmstefanski.discordms.web.user.CustomOAuth2UserServiceImpl;
-import pl.bmstefanski.discordms.web.user.UserEntityImpl;
+import pl.bmstefanski.discordms.web.user.User;
 import pl.bmstefanski.discordms.web.user.UserRepository;
 
 @Configuration
@@ -34,7 +34,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .accessTokenResponseClient(new RestOAuth2AccessTokenResponseClient(this.restOperations()))
         .and()
         .userInfoEndpoint()
-        .customUserType(UserEntityImpl.class, "discord")
+        .customUserType(User.class, "discord")
         .userService(new CustomOAuth2UserServiceImpl(this.restOperations(), this.userRepository));
   }
 
