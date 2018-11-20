@@ -13,10 +13,9 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.oauth2.core.user.OAuth2UserAuthority;
 import org.springframework.web.client.RestOperations;
-import pl.bmstefanski.discordms.web.guild.GuildEntityImpl;
-import pl.bmstefanski.discordms.web.repository.UserRepository;
 import pl.bmstefanski.discordms.web.auth.DiscordGuildsRequest;
 import pl.bmstefanski.discordms.web.auth.DiscordUserRequest;
+import pl.bmstefanski.discordms.web.guild.GuildEntityImpl;
 
 public class CustomOAuth2UserServiceImpl implements CustomOAuth2UserService {
 

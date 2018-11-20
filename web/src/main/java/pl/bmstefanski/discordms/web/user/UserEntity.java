@@ -8,8 +8,8 @@ import java.util.Map;
 import java.util.Set;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
-import pl.bmstefanski.discordms.web.util.IdentifiableEntity;
 import pl.bmstefanski.discordms.web.guild.GuildEntityImpl;
+import pl.bmstefanski.discordms.web.util.IdentifiableEntity;
 
 public interface UserEntity extends IdentifiableEntity<Long>, OAuth2User, Serializable {
 

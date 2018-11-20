@@ -6,7 +6,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestOperations;
-import pl.bmstefanski.discordms.web.auth.AccessTokenResponse;
 import pl.bmstefanski.discordms.web.util.Requestable;
 
 public class AccessTokenRequest implements Requestable<AccessTokenResponse> {

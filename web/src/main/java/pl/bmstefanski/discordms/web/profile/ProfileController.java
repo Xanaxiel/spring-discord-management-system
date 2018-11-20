@@ -1,4 +1,4 @@
-package pl.bmstefanski.discordms.web.controller;
+package pl.bmstefanski.discordms.web.profile;
 
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.bmstefanski.discordms.web.user.UserEntityImpl;
-import pl.bmstefanski.discordms.web.profile.ProfileDetailsForm;
-import pl.bmstefanski.discordms.web.profile.ProfileService;
 import pl.bmstefanski.discordms.web.user.UserService;
 
 @RequestMapping("/profile")

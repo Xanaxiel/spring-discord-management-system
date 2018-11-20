@@ -7,9 +7,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
-import pl.bmstefanski.discordms.web.user.UserEntityImpl;
-import pl.bmstefanski.discordms.web.repository.UserRepository;
 import pl.bmstefanski.discordms.web.user.CustomOAuth2UserServiceImpl;
+import pl.bmstefanski.discordms.web.user.UserEntityImpl;
+import pl.bmstefanski.discordms.web.user.UserRepository;
 
 @Configuration
 public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
